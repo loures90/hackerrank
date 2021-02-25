@@ -19,110 +19,39 @@ Note: The resulting magic square must contain distinct integers in the inclusive
     <title>Document</title>
 </head>
     <script>
+      
+      const teste = () =>{
+        magic = [[8, 1, 6, 3, 5, 7, 4, 9, 2], [6, 1, 8, 7, 5, 3, 2, 9, 4],
+            [4, 3, 8, 9, 5, 1, 2, 7, 6], [2, 7, 6, 9, 5, 1, 4, 3, 8],
+            [2, 9, 4, 7, 5, 3, 6, 1, 8], [4, 9, 2, 3, 5, 7, 8, 1, 6],
+            [6, 7, 2, 1, 5, 9, 8, 3, 4], [8, 3, 4, 1, 5, 9, 6, 7, 2]]
 
-        
-        
-        const teste = () =>{
-            
-            let teste = [[4, 8, 2],[4, 5, 7],[6, 1, 6]]
-                
-            let cost = 0
-            
 
-            let sumArray = toSum(teste)
+            let changes = []
+            let arr = [4,9,2,3,5,7,8,1,5]
 
-            
-            let position = findPosition(sumArray, teste, cost)
-                
-            }
-
-            const toSum = (teste) =>{
-                let sumArray = [[0,0,0],[0,0,0]]
-                
-
-                for(let i = 0; i< 3; i++){
-                
-                    for(let j = 0; j< 3; j++){
-                        
-                    if(i===0){
-                        sumArray[0][0] += teste[i][j] 
-                    }
-                    if(i===1){
-                        sumArray[0][1] += teste[i][j]
-                    }
-                    if(i===2){
-                        sumArray[0][2] += teste[i][j] 
-                    }
-                    if(j===0){
-                        sumArray[1][0] += teste[i][j] 
-                    }
-                    if(j===1){
-                        sumArray[1][1] += teste[i][j] 
-                    }
-                    if(j===2){
-                        sumArray[1][2] += teste[i][j] 
-                    }
+            magic.map(magicList=>{
+                let val =0 
+                for( let index = 0; index < 9 ;index++){
                     
-            }
-            
-        }
-        // console.log(sumArray)
-        return sumArray
-        }
-    
-        const findPosition = (sumArray, teste, cost) =>{
-            let indexLine = [] 
-            let indexCol = []
-            contador = 0 
-            do {
-                contador++
-                indexLine = [] 
-                indexCol = []
-                let val = 0
-                let count = 0
-                
-                for(let i = 0; i<3; i++){
-                    if(sumArray[0][i] !== 15){
-                        count +=1
-                        indexLine.push(i)
-    
-                        if(count ===1){
-                            cost += sumArray[0][i] > 15 ? sumArray[0][i]-15 : 15 - sumArray[0][i]  
-                            val = 15 - sumArray[0][i]
-                        }
-                    }
-                    
-                    
-                    if(sumArray[1][i] !==15){
-                        count +=1
-                        indexCol.push(i)
-                        if(count ===1){
-                            cost += sumArray[1][i] > 15 ? sumArray[1][i]-15 : 15 - sumArray[1][i]
-                            val = 15 - sumArray[0][i]  
-                        }
+                    if(arr[index] !== magicList[index]){
+                        val += arr[index] > magicList[index] ? arr[index] - magicList[index] : magicList[index] - arr[index] 
                     }
                 }
+                changes.push(val)
+            })
 
-                teste[indexLine[0]][indexCol[0]] += val
-                sumArray = toSum(teste)
-                console.log('ver posição',indexLine[0], indexCol[0])
-                console.log(teste)
-
-            } while (contador<10);
-            
-
-
-            indexLine = [] 
-            indexCol = []
-            count =0     
-
-            console.log(teste, cost)
-               
-        }
-            
-        
-
- </script>
+            console.log(changes)
+            let menor = Infinity
+            changes.map(num=>{
+                if(num< menor){
+                    menor =num
+                }
+            })
+            console.log(menor)
+      }
+     
+    </script>
             <body onload="teste()">
                 
 </body>
