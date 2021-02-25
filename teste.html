@@ -1,0 +1,129 @@
+<!-- Forming a Magic Square -->
+
+
+
+<!--  We define a magic square to be an  matrix of distinct positive integers from  to  where the sum of any row, column, or diagonal of length  is always equal to the same number: the magic constant.
+
+You will be given a  matrix  of integers in the inclusive range . We can convert any digit  to any other digit  in the range  at cost of . Given , convert it into a magic square at minimal cost. Print this cost on a new line.
+
+Note: The resulting magic square must contain distinct integers in the inclusive range -->
+
+<!-- https://www.hackerrank.com/challenges/magic-square-forming/problem -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+
+        
+        
+        const teste = () =>{
+            
+            let teste = [[4, 8, 2],[4, 5, 7],[6, 1, 6]]
+                
+            let cost = 0
+            
+
+            let sumArray = toSum(teste)
+
+            
+            let position = findPosition(sumArray, teste, cost)
+                
+            }
+
+            const toSum = (teste) =>{
+                let sumArray = [[0,0,0],[0,0,0]]
+                
+
+                for(let i = 0; i< 3; i++){
+                
+                    for(let j = 0; j< 3; j++){
+                        
+                    if(i===0){
+                        sumArray[0][0] += teste[i][j] 
+                    }
+                    if(i===1){
+                        sumArray[0][1] += teste[i][j]
+                    }
+                    if(i===2){
+                        sumArray[0][2] += teste[i][j] 
+                    }
+                    if(j===0){
+                        sumArray[1][0] += teste[i][j] 
+                    }
+                    if(j===1){
+                        sumArray[1][1] += teste[i][j] 
+                    }
+                    if(j===2){
+                        sumArray[1][2] += teste[i][j] 
+                    }
+                    
+            }
+            
+        }
+        // console.log(sumArray)
+        return sumArray
+        }
+    
+        const findPosition = (sumArray, teste, cost) =>{
+            let indexLine = [] 
+            let indexCol = []
+            contador = 0 
+            do {
+                contador++
+                indexLine = [] 
+                indexCol = []
+                let val = 0
+                let count = 0
+                
+                for(let i = 0; i<3; i++){
+                    if(sumArray[0][i] !== 15){
+                        count +=1
+                        indexLine.push(i)
+    
+                        if(count ===1){
+                            cost += sumArray[0][i] > 15 ? sumArray[0][i]-15 : 15 - sumArray[0][i]  
+                            val = 15 - sumArray[0][i]
+                        }
+                    }
+                    
+                    
+                    if(sumArray[1][i] !==15){
+                        count +=1
+                        indexCol.push(i)
+                        if(count ===1){
+                            cost += sumArray[1][i] > 15 ? sumArray[1][i]-15 : 15 - sumArray[1][i]
+                            val = 15 - sumArray[0][i]  
+                        }
+                    }
+                }
+
+                teste[indexLine[0]][indexCol[0]] += val
+                sumArray = toSum(teste)
+                console.log('ver posição',indexLine[0], indexCol[0])
+                console.log(teste)
+
+            } while (contador<10);
+            
+
+
+            indexLine = [] 
+            indexCol = []
+            count =0     
+
+            console.log(teste, cost)
+               
+        }
+            
+        
+
+ </script>
+            <body onload="teste()">
+                
+</body>
+</html>
