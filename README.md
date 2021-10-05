@@ -1,8 +1,8 @@
 # hackerrank
-Exercicios do  Hackerhank
+Hackerhank tests.
 
-Esse arquivo tem 3 exercícios do hacker ranck. 
-O quadrado mágico. (O quadrado mágico está incompleto).
-Soma dos elementos de uma matriz.
-A diferença das diagonais de uma matriz.
-Mininum Swap - O menor número de trocas para deixar uma matriz ordenada
+This repository presents 3 tests from hackerranck web site.
+- Magic square.
+- sum of elements of a matrix.
+- difference between diagonal from a matrix.
+- Minimum Swap - the smallest number of swaps to make an ordered matrix. 
